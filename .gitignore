@@ -1,0 +1,43 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+*.dylib
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Tooling metadata
+.idea/
+.vscode/
+
+# Build / packaging
+*.egg-info/
+dist/
+build/
+
+# Logs / temp files
+*.log
+*.tmp
+logs/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Data and run artifacts
+dataset/
+
+runs/
+
+# Model weights and exports
+
+*.pth
+*.onnx
+models/**/*.pt
+
+# OS files
+*.DS_Store

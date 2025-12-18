@@ -1,0 +1,21 @@
+{
+  "settings_version": "0.0.6",
+  "datasets_dir": "/home/jackson/Documents/poc_visao_placa/datasets",
+  "weights_dir": "weights",
+  "runs_dir": "runs",
+  "uuid": "da6cdc64d2a63348c68b3fcd1f28c06d3feeafd362f7a7f9d7584ce313a23ae7",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "hub": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}

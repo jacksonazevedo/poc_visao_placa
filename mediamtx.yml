@@ -1,0 +1,23 @@
+# Configuração básica do MediaMTX para receber fluxos RTSP/RTMP.
+# Esta sintaxe usa flags booleanas (api/rtsp/rtmp/hls) e endereços separados.
+
+rtsp: yes
+rtspAddress: :8554
+
+rtmp: yes
+rtmpAddress: :1935
+
+hls: yes
+hlsAddress: :8888
+
+api: yes
+
+paths:
+  cam1:
+    # Modo padrão: espera um publisher empurrar vídeo para rtsp://host:8554/cam1
+    # ou rtmp://host:1935/cam1.
+    source: publisher
+
+  # Exemplo de pull de uma câmera RTSP/RTMP externa; descomente e ajuste a URL.
+  # cam_pull:
+  #   source: "rtsp://usuario:senha@host:554/stream1"
