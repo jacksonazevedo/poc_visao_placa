@@ -4,7 +4,7 @@ Pipeline para detecção de placas em cenas de veículos e leitura via OCR.
 
 ## Estrutura
 - `dataset/`: Roboflow export (YOLO) com `data.yaml`, splits `train/valid/test`.
-- `runs/plates/train/weights/best.pt`: checkpoint treinado (base `yolo11n.pt`, 30 épocas).
+- `best.pt`: checkpoint treinado (base `yolo11n.pt`, 30 épocas).
 - `main.py`: treino, inferência em imagem/vídeo/stream, OCR e salvamento.
 - `.config/`: diretório local para caches do Ultralytics (criado automaticamente).
 
@@ -19,7 +19,7 @@ env/bin/pip install "ultralytics>=8.3.0" opencv-python
 
 ## Uso rápido
 - `--mode train|infer`: escolhe treino ou inferência.
-- `--weights`: checkpoint para treinar ou inferir (`yolo11n.pt` ou `runs/plates/train/weights/best.pt`).
+- `--weights`: checkpoint para treinar ou inferir (`yolo11n.pt` ou `best.pt`).
 - `--source`: imagem/vídeo local ou stream (rtsp/rtmp/http).
 - `--show`: abre janela ao vivo (vídeo/stream).
 - `--save-video`: grava saída anotada ao inferir vídeo.
@@ -32,7 +32,7 @@ ULTRALYTICS_CONFIG_DIR=.config XDG_CONFIG_HOME=.config \
 env/bin/python main.py --mode train \
   --weights yolo11n.pt --epochs 30 --imgsz 640 --batch 16
 ```
-Saída: `runs/plates/train/weights/best.pt` e métricas em `runs/plates/train/results.csv`.
+Saída: `best.pt` e métricas em `runs/plates/train/results.csv`.
 
 ## Inferência (exemplos prontos)
 
@@ -40,7 +40,7 @@ Saída: `runs/plates/train/weights/best.pt` e métricas em `runs/plates/train/re
 ```bash
 ULTRALYTICS_CONFIG_DIR=.config XDG_CONFIG_HOME=.config \
 env/bin/python main.py --mode infer \
-  --weights runs/plates/train/weights/best.pt \
+  --weights best.pt \
   --source input/exemplo1.jpg --conf 0.25
 ```
 Saída: `runs/plates/predict/exemplo1_ocr.jpg`. Troque para `input/exemplo2.png` se preferir.
@@ -49,7 +49,7 @@ Saída: `runs/plates/predict/exemplo1_ocr.jpg`. Troque para `input/exemplo2.png`
 ```bash
 ULTRALYTICS_CONFIG_DIR=.config XDG_CONFIG_HOME=.config \
 env/bin/python main.py --mode infer \
-  --weights runs/plates/train/weights/best.pt \
+  --weights best.pt \
   --source input/video1.mp4 \
   --conf 0.25 --imgsz 640 --save-video
 ```
@@ -59,7 +59,7 @@ Saída: `runs/plates/predict/video1_ocr.mp4`.
 ```bash
 ULTRALYTICS_CONFIG_DIR=.config XDG_CONFIG_HOME=.config \
 env/bin/python main.py --mode infer \
-  --weights runs/plates/train/weights/best.pt \
+  --weights best.pt \
   --source input/video2.mp4 \
   --conf 0.25 --imgsz 640 --track --save-video --show
 ```
@@ -69,7 +69,7 @@ Saída: `runs/plates/predict/video2_ocr.mp4`. Pressione `q` para fechar a janela
 ```bash
 ULTRALYTICS_CONFIG_DIR=.config XDG_CONFIG_HOME=.config \
 env/bin/python main.py --mode infer \
-  --weights runs/plates/train/weights/best.pt \
+  --weights best.pt \
   --source rtsp://localhost:8554/cam1 \
   --conf 0.25 --imgsz 640 --show --save-video
 ```
